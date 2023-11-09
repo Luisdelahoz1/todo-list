@@ -1,0 +1,12 @@
+<!-- formulario-modal.component.html -->
+<h2>Agregar Registro</h2>
+<form [formGroup]="formulario">
+  <!-- Agrega tus campos de formulario aquí -->
+  <label for="pais">País:</label>
+  <input type="text" formControlName="pais" />
+
+  <!-- Repite para los demás campos -->
+
+  <button mat-button (click)="guardar()">Guardar</button>
+  <button mat-button (click)="cerrar()">Cerrar</button>
+</form>
