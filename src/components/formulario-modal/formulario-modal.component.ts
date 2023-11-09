@@ -1,4 +1,3 @@
-// formulario-modal.component.ts
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormularioModalComponent {
   formulario: FormGroup;
+  paises: string[] = ['Selecciona un país', 'Argentina', 'Brasil', 'Chile', 'México'];
 
   constructor(
     public dialogRef: MatDialogRef<FormularioModalComponent>,
@@ -27,8 +27,9 @@ export class FormularioModalComponent {
   }
 
   guardar() {
-    // Puedes agregar más validaciones aquí antes de cerrar el modal
-    this.dialogRef.close(this.formulario.value);
+    if (this.formulario.valid) {
+      this.dialogRef.close(this.formulario.value);
+    }
   }
 
   cerrar() {

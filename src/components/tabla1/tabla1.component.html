@@ -1,4 +1,4 @@
-<button mat-button (click)="abrirModal()">Agregar fila</button>
+<button mat-raised-button (click)="abrirModal()">Agregar fila</button>
 
 <table mat-table [dataSource]="dataSource">
   <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
