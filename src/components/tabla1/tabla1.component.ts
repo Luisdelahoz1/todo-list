@@ -1,7 +1,7 @@
 // tabla1.component.ts
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormularioModalComponent } from '../formulario-modal/formulario-modal.component';
+import { FormularioModalComponent,  } from '../formulario-modal/formulario-modal.component';
 
 @Component({
   selector: 'app-tabla1',

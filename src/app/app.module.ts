@@ -11,6 +11,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+
+
 
 @NgModule({
   declarations: [
@@ -18,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
     Tabla1Component,
     Tabla2Component,
     FormularioModalComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

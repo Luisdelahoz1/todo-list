@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule  } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-modal',
@@ -10,6 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormularioModalComponent {
   formulario: FormGroup;
   paises: string[] = ['Selecciona un país', 'Argentina', 'Brasil', 'Chile', 'México'];
+  
+  checked = true;
+  indeterminate = true;
+  labelPosition: 'Activo' | 'after' = 'after';
+  disabled = true;
 
   constructor(
     public dialogRef: MatDialogRef<FormularioModalComponent>,
@@ -24,6 +29,8 @@ export class FormularioModalComponent {
       genero: ['', Validators.required],
       activo: [false],
     });
+
+    
   }
 
   guardar() {

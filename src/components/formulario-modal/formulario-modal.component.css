@@ -2,3 +2,68 @@
  display: flexbox;
 
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  mat-form-field {
+    width: 94%;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  form {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  mat-form-field {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  button {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .mat-select,
+  .mat-checkbox {
+    margin-bottom: 0;
+  }
+  
+  form:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .mat-select,
+.mat-checkbox {
+  margin-bottom: 0;
+}
+
+
+.example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+  }
