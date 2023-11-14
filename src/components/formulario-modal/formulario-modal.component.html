@@ -37,8 +37,10 @@
       </mat-form-field>
 
       <section class="example-section">
-        <mat-checkbox class="example-margin" formControlName="activo">Activos</mat-checkbox>
+        <mat-checkbox class="example-margin" [checked]="formulario.get('activo').value" (change)="toggleActivo()">Activos</mat-checkbox>
+        <mat-checkbox class="example-margin" [checked]="formulario.get('inactivo').value" (change)="toggleInactivo()">Inactivos</mat-checkbox>
       </section>
+      
       
       <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
       <button mat-raised-button color="warn" (click)="cerrar()">Cerrar</button>

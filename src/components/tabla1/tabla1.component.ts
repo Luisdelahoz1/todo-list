@@ -23,6 +23,7 @@ export class Tabla1Component {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataSource.push(result);
+        console.log('Datos agregados a dataSource:', this.dataSource);
       }
     });
   }
