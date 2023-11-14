@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, FormsModule  } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-formulario-modal',
@@ -8,9 +9,9 @@ import { FormBuilder, FormGroup, Validators, FormsModule  } from '@angular/forms
   styleUrls: ['./formulario-modal.component.css'],
 })
 export class FormularioModalComponent {
+  paises: string[] = ['Colombia', 'Argentina', 'Brasil', 'Chile', 'México'];
   formulario: FormGroup;
-  paises: string[] = ['Selecciona un país', 'Argentina', 'Brasil', 'Chile', 'México'];
-  
+
   checked = true;
   indeterminate = true;
   labelPosition: 'Activo' | 'after' = 'after';
@@ -25,12 +26,18 @@ export class FormularioModalComponent {
       pais: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      edad: ['', Validators.required],
+      edad: ['', [Validators.required, this.validarEdadNoNegativa]],
       genero: ['', Validators.required],
       activo: [false],
     });
+  }
 
-    
+  validarEdadNoNegativa(control: AbstractControl): { [key: string]: any } | null {
+    const edad = control.value;
+    if (edad < 0) {
+      return { 'edadNegativa': true };
+    }
+    return;
   }
 
   guardar() {

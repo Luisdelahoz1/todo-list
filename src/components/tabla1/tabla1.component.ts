@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormularioModalComponent,  } from '../formulario-modal/formulario-modal.component';
 
+
 @Component({
   selector: 'app-tabla1',
   templateUrl: './tabla1.component.html',

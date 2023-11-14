@@ -5,11 +5,12 @@
 
       <mat-form-field appearance="fill">
         <mat-label>País</mat-label>
-        <mat-select formControlName="pais" name="pais">
-          <mat-option *ngFor="let pais of paises" [value]="pais">{{ pais }}</mat-option>
+        <mat-select formControlName="pais">
+          <mat-option>Selecionar un pais</mat-option>
+          <mat-option *ngFor="let pais of paises" [value]="pais">{{pais}}</mat-option>
         </mat-select>
       </mat-form-field>
-
+      
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="nombre" placeholder="Nombre">
@@ -17,15 +18,22 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Apellido</mat-label>
-        <input matInput formControlName="apellido" placeholder="Apellido">
+        <input matInput formControllastname="apellido" placeholder="Apellido">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <input matInput formControlName="edad" placeholder="Edad">
+        <input matInput type="number" formControlName="edad" placeholder="Edad">
+        <mat-error *ngIf="formulario.get('edad').hasError('pattern')">
+          La edad debe ser un número.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <input matInput formControlName="genero" placeholder="Género">
+        <mat-label>Género</mat-label>
+        <mat-select formControlName="genero">
+          <mat-option value="masculino">Masculino</mat-option>
+          <mat-option value="femenino">Femenino</mat-option>
+        </mat-select>
       </mat-form-field>
 
       <section class="example-section">
