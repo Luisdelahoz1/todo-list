@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormularioModalComponent,  } from '../formulario-modal/formulario-modal.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -10,8 +11,8 @@ import { FormularioModalComponent,  } from '../formulario-modal/formulario-modal
   styleUrls: ['./tabla1.component.css']
 })
 export class Tabla1Component {
+  dataSource = new MatTableDataSource<any>([]);
   displayedColumns: string[] = ['pais', 'nombre', 'apellido', 'edad', 'genero', 'activo'];
-  dataSource: any[] = [];
 
   constructor(public dialog: MatDialog) {}
 
@@ -22,8 +23,7 @@ export class Tabla1Component {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.dataSource.push(result);
-        console.log('Datos agregados a dataSource:', this.dataSource);
+        this.dataSource.data = [...this.dataSource.data, result];  
       }
     });
   }

@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
   styleUrls: ['./formulario-modal.component.css'],
 })
 export class FormularioModalComponent {
-  paises: string[] = ['Colombia', 'Argentina', 'Brasil', 'Chile', 'México'];
+  paises: string[] = ['Colombia', 'Argentina', 'Brasil', 'Chile', 'México', 'Venezuela'];
 
   formulario: FormGroup;
 
@@ -57,12 +57,10 @@ export class FormularioModalComponent {
   guardar() {
     if (this.formulario.valid) {
       this.dialogRef.close(this.formulario.value);
-      console.log('Guardando datos:', this.formulario.value);
     }
   }
 
   cerrar() {
-    console.log('Cerrando el diálogo sin guardar.');
     this.dialogRef.close();
   }
 }
