@@ -16,6 +16,7 @@ export class Tabla1Component {
 
   constructor(public dialog: MatDialog) {}
 
+
   abrirModal() {
     const dialogRef = this.dialog.open(FormularioModalComponent, {
       width: '400px',
@@ -24,6 +25,7 @@ export class Tabla1Component {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataSource.data = [...this.dataSource.data, result];  
+        
       }
     });
   }

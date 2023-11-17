@@ -14,6 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 
 
@@ -21,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
   declarations: [
     AppComponent,
     Tabla1Component,
-    FormularioModalComponent
+    FormularioModalComponent,
+    
 
   ],
   imports: [
@@ -37,6 +41,8 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatSelectModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
   ],
 
   schemas:[

@@ -11,13 +11,8 @@ export class FormularioModalComponent {
   paises: string[] = ['Colombia', 'Argentina', 'Brasil', 'Chile', 'México', 'Venezuela'];
 
   formulario: FormGroup;
+  guardadoExitoso = false;
 
-  checked = true;
-  indeterminate = true;
-  labelPosition: 'Activo' | 'after' = 'after';
-  disabled = true;
-  checkedActivo = false;
-  checkedInactivo = false;
 
   constructor(
     public dialogRef: MatDialogRef<FormularioModalComponent>,
@@ -26,25 +21,17 @@ export class FormularioModalComponent {
 
   ) {
     this.formulario = this.fb.group({
+
       pais: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      edad: ['', [Validators.required, this.validarEdadNoNegativa]],
+      edad: [null, [Validators.required, Validators.pattern(/^\d+$/), Validators.min(0)]],
       genero: ['', Validators.required],
       activo: [false],
-      inactivo: [false],
+     
     });
   }
 
-  toggleActivo() {
-    this.checkedActivo = !this.checkedActivo;
-    this.formulario.get('activo').setValue(this.checkedActivo);
-  }
-
-  toggleInactivo() {
-    this.checkedInactivo = !this.checkedInactivo;
-    this.formulario.get('inactivo').setValue(this.checkedInactivo);
-  }
 
   validarEdadNoNegativa(control: AbstractControl): { [key: string]: any } | null {
     const edad = control.value;
@@ -56,11 +43,21 @@ export class FormularioModalComponent {
 
   guardar() {
     if (this.formulario.valid) {
-      this.dialogRef.close(this.formulario.value);
+      this.guardadoExitoso = true;
+      setTimeout(() => {
+        this.guardadoExitoso = false;
+      }, 3000); 
     }
   }
+
 
   cerrar() {
     this.dialogRef.close();
   }
+
+  
+  ngOnInit() {
+  
+  }
+
 }
