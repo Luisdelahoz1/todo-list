@@ -10,8 +10,6 @@ import { Tabla1Component } from '../components/tabla1/tabla1.component';
 import { SharedModule } from 'src/components/shared/shared.module';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

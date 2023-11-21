@@ -43,21 +43,16 @@ export class FormularioModalComponent {
 
   guardar() {
     if (this.formulario.valid) {
-      this.guardadoExitoso = true;
-      setTimeout(() => {
-        this.guardadoExitoso = false;
-      }, 3000); 
+      this.dialogRef.close(this.formulario.value);
     }
   }
 
 
   cerrar() {
+    this.formulario.markAllAsTouched();
     this.dialogRef.close();
   }
 
-  
-  ngOnInit() {
-  
-  }
+ 
 
 }

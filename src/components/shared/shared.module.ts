@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -34,6 +35,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatInputModule,
     MatCheckboxModule,
     MatSlideToggleModule,
+    MatIconModule
     
   ],
 
@@ -50,6 +52,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatInputModule,
     MatCheckboxModule,
     MatSlideToggleModule,
+    MatIconModule
 
   ]
 
