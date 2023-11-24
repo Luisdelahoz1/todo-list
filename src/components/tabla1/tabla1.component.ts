@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { FormularioModalComponent } from '../formulario-modal/formulario-modal.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,9 +17,7 @@ export class Tabla1Component {
 
   dataSource = new MatTableDataSource<any>([]);
 
-  constructor(public dialog: MatDialog) {
-    
-  }
+  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar) {}
 
   abrirModal() {
     const dialogRef = this.dialog.open(FormularioModalComponent, {
@@ -49,12 +48,22 @@ editarUsuario(usuario: any): void {
   }
 
   eliminarUsuario(usuario: any): void {
+
     const confirmacion = confirm('¿Estás seguro de que deseas eliminar este usuario?');
     
     if (confirmacion) {
+
       const index = this.dataSource.data.findIndex(u => u === usuario);
       this.dataSource.data.splice(index, 1);
       this.dataSource._updateChangeSubscription();
+
+      this._snackBar.open('Usuario eliminado', '', {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+
+      })
     }
   }
+
 }

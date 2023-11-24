@@ -1,55 +1,39 @@
-h2 {
-    text-align: center;
-    align-items: center;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  button {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  mat-form-field:nth-child(even),
-  tr.mat-row:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .mat-select,
-  .mat-checkbox {
-    margin-bottom: 0;
-  }
-  
   table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  button {
-    display: inline-block; 
-    margin-right: 5px; 
-  }
-  
+th {
+  background-color: #8b8e92;
+  color: #fff;
+  text-align: left;
+  padding: 16px;
+  font-weight: bold;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 16px;
+}
+
+tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+
+
+.agregar-fila-btn {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.agregar-fila-btn:hover {
+  background-color: #0056b3;
+}

@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-formulario-modal',
@@ -8,16 +9,19 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
   styleUrls: ['./formulario-modal.component.css'],
 })
 export class FormularioModalComponent {
+  
   paises: string[] = ['Colombia', 'Argentina', 'Brasil', 'Chile', 'México', 'Venezuela'];
 
   formulario: FormGroup;
-  guardadoExitoso = false;
+
 
 
   constructor(
+
     public dialogRef: MatDialogRef<FormularioModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar
 
   ) {
 
@@ -39,7 +43,6 @@ export class FormularioModalComponent {
     }
   }
 
-
   validarEdadNoNegativa(control: AbstractControl): { [key: string]: any } | null {
     const edad = control.value;
     if (edad < 0) {
@@ -51,15 +54,18 @@ export class FormularioModalComponent {
   guardar() {
     if (this.formulario.valid) {
       this.dialogRef.close(this.formulario.value);
+
+      this._snackBar.open( 'usuario guardado con exito', '',   {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      })
     }
   }
-
 
   cerrar() {
     this.formulario.markAllAsTouched();
     this.dialogRef.close();
   }
-
- 
 
 }
