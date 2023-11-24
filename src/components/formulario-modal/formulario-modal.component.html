@@ -1,68 +1,62 @@
-<mat-card>
-  <mat-card-content>
-    <h2>Agregar Registro</h2>
-    <form [formGroup]="formulario">
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+  
+      <h2>Agregar Registro</h2>
+  
+      <form [formGroup]="formulario">
+        <mat-form-field >
+          <mat-label>País</mat-label>
+          <mat-select formControlName="pais">
+            <mat-option>Selecionar un pais</mat-option>
+            <mat-option *ngFor="let pais of paises" [value]="pais">{{ pais }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label for="nombre">Nombre</mat-label>
+          <input matInput formControlName="nombre" id="nombre"  required>
+          <mat-hint align="end">Campo obligatorio</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field >
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido" placeholder="Apellido"  required>
+          <mat-hint align="end">Campo obligatorio</mat-hint>
+  
+        </mat-form-field>
+  
+        <mat-form-field>
+          <input matInput type="number" formControlName="edad" placeholder="Edad">
+          <mat-error *ngIf="formulario.get('edad').hasError('pattern')">
+            La edad no puede ser negativa.
+  
+          </mat-error>
+          <mat-error *ngIf="formulario.get('edad').hasError('edadNegativa')">
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field >
+          <mat-label>Género</mat-label>
+          <mat-select formControlName="genero">
+            <mat-option value="masculino">Masculino</mat-option>
+            <mat-option value="femenino">Femenino</mat-option>
+            
+          </mat-select>
+        </mat-form-field>
 
+          <mat-slide-toggle formControlName="activo">Activo/Inactivo</mat-slide-toggle>
 
-      <mat-form-field >
-        <mat-label>País</mat-label>
-        <mat-select formControlName="pais">
-          <mat-option>Selecionar un pais</mat-option>
-          <mat-option *ngFor="let pais of paises" [value]="pais">{{pais}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      
-      <!-- <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre">
-      </mat-form-field> -->
-
-      <mat-form-field>
-        <mat-label for="nombre">Nombre</mat-label>
-        <input matInput formControlName="nombre" id="nombre" autocomplete="off" required>
-        <mat-hint align="end">Campo obligatorio</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field >
-        <mat-label>Apellido</mat-label>
-        <input matInput formControlName="apellido" placeholder="Apellido" autocomplete="off" required>
-        <mat-hint align="end">Campo obligatorio</mat-hint>
-
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput type="number" formControlName="edad" placeholder="Edad">
-        <mat-error *ngIf="formulario.get('edad').hasError('pattern')">
-          La edad debe ser un número.
-        </mat-error>
-        <mat-error *ngIf="formulario.get('edad').hasError('edadNegativa')">
-          La edad no puede ser negativa.
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field >
-        <mat-label>Género</mat-label>
-        <mat-select formControlName="genero">
-          <mat-option value="masculino">Masculino</mat-option>
-          <mat-option value="femenino">Femenino</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      
-      <mat-slide-toggle formControlName="activo">Activo/Inactivo</mat-slide-toggle>
-
-      
-      <button mat-raised-button color="primary" (click)="guardar()" [disabled]="formulario.invalid">Guardar</button>
-      <button mat-raised-button color="warn" (click)="cerrar()">Cerrar</button>
-
-      
-
-    </form>
-
-    <div *ngIf="guardadoExitoso" class="exito-mensaje">
-      ¡Guardado exitosamente!
-    </div>
-    
-  </mat-card-content>
-</mat-card>
+        <br>
+        <br>
+          <button mat-raised-button color="primary" (click)="guardar()" [disabled]="formulario.invalid">Guardar</button>
+          <button mat-raised-button color="warn" (click)="cerrar()">Cerrar</button>
+       
+      </form>
+  
+     
+    </mat-card-content>
+  </mat-card>
+  
+</div>
 

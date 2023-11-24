@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { FormularioModalComponent } from '../formulario-modal/formulario-modal.component';
 import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-tabla1',
@@ -9,10 +10,15 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./tabla1.component.css']
 })
 export class Tabla1Component {
-  dataSource = new MatTableDataSource<any>([]);
-  displayedColumns: string[] = ['pais', 'nombre', 'apellido', 'edad', 'genero', 'activo', 'Opciones'];
 
-  constructor(public dialog: MatDialog) {}
+  col_1: string[] = ['pais', 'nombre', 'apellido', 'edad', 'genero', 'activo'];
+  col_2: string[] = [...this.col_1, 'acciones'];
+
+  dataSource = new MatTableDataSource<any>([]);
+
+  constructor(public dialog: MatDialog) {
+    
+  }
 
   abrirModal() {
     const dialogRef = this.dialog.open(FormularioModalComponent, {
@@ -22,20 +28,22 @@ export class Tabla1Component {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataSource.data = [...this.dataSource.data, result];
+        
       }
     });
   }
 
-  editarUsuario(usuario: any): void {
-    const dialogRef = this.dialog.open(FormularioModalComponent, {
-      data: usuario,
-    });
-
+editarUsuario(usuario: any): void {
+  const dialogRef = this.dialog.open(FormularioModalComponent, {
+    data: { modo: 'editar', usuario: usuario },
+    width: '400px',
+  });
+  
     dialogRef.afterClosed().subscribe(editedUser => {
       if (editedUser) {
-        const index = this.dataSource.data.findIndex(i => i === usuario);
+        const index = this.dataSource.data.findIndex(u => u === usuario);
         this.dataSource.data[index] = editedUser;
-        this.dataSource.data = [...this.dataSource.data];
+        this.dataSource._updateChangeSubscription();
       }
     });
   }
@@ -44,9 +52,9 @@ export class Tabla1Component {
     const confirmacion = confirm('¿Estás seguro de que deseas eliminar este usuario?');
     
     if (confirmacion) {
-      const index = this.dataSource.data.findIndex(i => i === usuario);
+      const index = this.dataSource.data.findIndex(u => u === usuario);
       this.dataSource.data.splice(index, 1);
-      this.dataSource.data = [...this.dataSource.data];
+      this.dataSource._updateChangeSubscription();
     }
   }
 }

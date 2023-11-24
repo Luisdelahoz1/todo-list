@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Tabla1Component } from '../components/tabla1/tabla1.component';
 import { SharedModule } from 'src/components/shared/shared.module';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { SharedModule } from 'src/components/shared/shared.module';
   ],
 
 
-  providers: [],
+  providers: [ { provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

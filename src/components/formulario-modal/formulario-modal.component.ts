@@ -20,6 +20,7 @@ export class FormularioModalComponent {
     private fb: FormBuilder
 
   ) {
+
     this.formulario = this.fb.group({
 
       pais: ['', Validators.required],
@@ -30,6 +31,12 @@ export class FormularioModalComponent {
       activo: [false],
      
     });
+  }
+
+  ngOnInit() {
+    if (this.data && this.data.usuario) {
+      this.formulario.patchValue(this.data.usuario);
+    }
   }
 
 
