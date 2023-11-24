@@ -6,7 +6,7 @@
 }
 
 th {
-  background-color: #8b8e92;
+  background-color: rgb(33, 51, 65);
   color: #fff;
   text-align: left;
   padding: 16px;
@@ -19,7 +19,7 @@ td {
 }
 
 tr:nth-child(odd) {
-  background-color: #f9f9f9;
+  background-color: #f9f9f9;  
 }
 
 
